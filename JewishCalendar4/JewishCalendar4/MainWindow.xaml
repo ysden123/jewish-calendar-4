@@ -1,0 +1,30 @@
+﻿<Window x:Class="StulSoft.JewishCalendar4.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Jewish calendar" Height="250" Width="800">
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="{x:Type Button}">
+                <Setter Property="Margin" Value="10 0"/>
+            </Style>
+        </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label Content="Candle lihgt date:" VerticalAlignment="Center" HorizontalAlignment="Right"></Label>
+        <Button x:Name="CandleLightButton" Grid.Column="1" Height="35" Width="200" Click="CandleLightButton_Click" Cursor="Hand">Get date</Button>
+        <TextBox x:Name="CandleLightDate" Grid.Column="2" Height="30" Width="250" IsTabStop="False" IsReadOnly="True"/>
+        <TextBox x:Name="GregDate" Grid.Row="1" Grid.Column="0" Height="30" Margin="137,39,10,31" ToolTip="Gregorian date in format yyyy-mm-dd"/>
+        <Button x:Name="HibDateButton" Grid.Row="1" Grid.Column="1" Height="35"  Width="200" Click="HebDateButton_Click" Cursor="Hand">Convert to Hebrew</Button>
+        <TextBox x:Name="HebrewDate" Grid.Row="1" Grid.Column="2" Height="30" Width="250" IsTabStop="False" IsReadOnly="True"/>
+    </Grid>
+</Window>
