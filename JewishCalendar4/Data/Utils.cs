@@ -2,7 +2,7 @@
 
 namespace StulSoft.JewishCalendar4.Data
 {
-    internal class Utils
+    public class Utils
     {
         public static CandleLightItem? CandleLightItemFromJson(string json)
         {
