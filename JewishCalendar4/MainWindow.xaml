@@ -4,7 +4,19 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Jewish calendar" Height="250" Width="800">
+        Title="Jewish calendar" Height="250" Width="800" WindowStartupLocation="CenterScreen">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Actions">
+                <MenuItem Header="Candles light date" Name="CandleLightDateMenuItem" Click="CandleLightDateMenuItem_Click"/>
+                <MenuItem Header="Convert hebrew date" Name="ConvertHebDateMunuItem" Click="ConvertHebDateMunuItem_Click"/>
+                <Separator/>
+                <MenuItem Header="Close" Name="CloseMenuItem" Click="CloseMenuItem_Click"/>
+            </MenuItem>
+        </Menu>
+        <ContentControl x:Name="CC" BorderThickness="4" Margin="5,5,0,0"/>
+    </DockPanel>
+    <!--
     <Grid>
         <Grid.Resources>
             <Style TargetType="{x:Type Button}">
@@ -27,4 +39,5 @@
         <Button x:Name="HibDateButton" Grid.Row="1" Grid.Column="1" Height="35"  Width="200" Click="HebDateButton_Click" Cursor="Hand">Convert to Hebrew</Button>
         <TextBox x:Name="HebrewDate" Grid.Row="1" Grid.Column="2" Height="30" Width="250" IsTabStop="False" IsReadOnly="True"/>
     </Grid>
+    -->
 </Window>

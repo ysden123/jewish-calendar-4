@@ -1,5 +1,4 @@
-﻿using StulSoft.JewishCalendar4.Service;
-using System.Windows;
+﻿using System.Windows;
 
 namespace StulSoft.JewishCalendar4
 {
@@ -19,29 +18,20 @@ namespace StulSoft.JewishCalendar4
                 Title = $"{Title} {version}";
             }
         }
-        private void CandleLightButton_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                CandleLightDate.Text = CandleService.GetCandleLightDate();
-            }
-            catch (Exception ex)
-            {
-                CandleLightDate.Text = $"ERROR: {ex.Message}";
-            }
 
+        private void CloseMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
 
-        private void HebDateButton_Click(object sender, RoutedEventArgs e)
+        private void ConvertHebDateMunuItem_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                HebrewDate.Text = HebrewDateConverterService.GetHebrewDate(DateTime.Parse(GregDate.Text));
-            }
-            catch (Exception ex)
-            {
-                HebrewDate.Text = $"ERROR: {ex.Message}";
-            }
+            CC.Content = new GregDateConverterControl();
+        }
+
+        private void CandleLightDateMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            CC.Content = new CandlesLightControl();
         }
     }
 }
