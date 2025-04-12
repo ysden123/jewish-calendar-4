@@ -24,7 +24,7 @@ namespace StulSoft.TestProject.Data
                 }
                 """;
             CandleLightItem? candleLightItem = Utils.CandleLightItemFromJson(json);
-            Assert.IsNotNull(candleLightItem);
+            Assert.That(candleLightItem, Is.Not.Null);
             Assert.That(candleLightItem.Category, Is.EqualTo("candles"));
             Assert.Pass();
         }
