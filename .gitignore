@@ -2,7 +2,6 @@
 packages/
 **/obj
 **/bin
+**/Properties
 
-JewishCalendar4/Properties/PublishProfiles/FolderProfile.pubxml
-
-JewishCalendar4/Properties/PublishProfiles/FolderProfile.pubxml.user
+*.user

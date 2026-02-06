@@ -1,5 +1,4 @@
-﻿using System;
-using StulSoft.JewishCalendar4.Data;
+﻿using StulSoft.JewishCalendar4.Data;
 
 namespace StulSoft.TestProject.Data
 {
@@ -14,7 +13,7 @@ namespace StulSoft.TestProject.Data
         public void DeserializationTest()
         {
             string json = """
-                {               {
+                {               
                   "category": "candles",
                   "date": "2024-04-19T18:51:00+03:00",
                   "hebrew": "\u05d4\u05d3\u05dc\u05e7\u05ea \u05e0\u05e8\u05d5\u05ea",
