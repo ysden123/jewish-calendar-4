@@ -5,52 +5,56 @@ namespace StulSoft.JewishCalendar4.Service
 {
     internal class CandleService
     {
-        public static string? GetCandleLightDate()
+        public static Task<string?> GetCandleLightDateAsync()
         {
-            var client = new HttpClient();
-            try
+            return Task.Run(() =>
             {
-                var task = Task.Run(() => client.GetStringAsync("https://www.hebcal.com/shabbat?cfg=json&geo=293397&city=IL-Tel%20Aviv&m=50&leyning=off&b=22"));
-                task.Wait();
-                var response = Utils.CandleLightResponseFromJson(task.Result);
-                if (response != null)
+                var client = new HttpClient();
+                try
                 {
-                    var items = from item in response.Items
-                                where item.Title_orig == "Candle lighting" && item.Category == "candles"
-                                select item;
-                    if (items != null && items.Count() > 0)
+                    var task = Task.Run(() => client.GetStringAsync("https://www.hebcal.com/shabbat?cfg=json&geo=293397&city=IL-Tel%20Aviv&m=50&leyning=off&b=22"));
+                    task.Wait();
+                    var response = Utils.CandleLightResponseFromJson(task.Result);
+                    if (response != null)
                     {
-                        try
+                        var items = from item in response.Items
+                                    where item.Title_orig == "Candle lighting" && item.Category == "candles"
+                                    select item;
+                        if (items != null && items.Count() > 0)
                         {
-                            var firstDate = items.First().Date;
-                            if (firstDate != null)
+                            try
                             {
-                                return Utils.ExtractDate(firstDate).ToString();
+                                var firstDate = items.First().Date;
+                                if (firstDate != null)
+                                {
+                                    return Utils.ExtractDate(firstDate).ToString();
+                                }
+                                else
+                                {
+                                    return "No date";
+                                }
                             }
-                            else
+                            catch (Exception ex)
                             {
-                                return "No date";
+                                return ex.Message;
                             }
-                        }catch (Exception ex)
+                        }
+                        else
                         {
-                            return ex.Message;
+                            return "ERROR2";
                         }
                     }
                     else
                     {
-                        return "ERROR2";
+                        return "No response";
                     }
+
                 }
-                else
+                catch (Exception ex)
                 {
-                    return "No response";
+                    return ex.Message;
                 }
-                
-            }
-            catch (Exception)
-            {
-                return null;
-            }
+            });
         }
     }
 }

@@ -11,9 +11,15 @@ namespace StulSoft.JewishCalendar4
         public CandlesLightControl()
         {
             InitializeComponent();
+            FillData();
+        }
+        
+        public async void FillData()
+        {
             try
             {
-                Text.Text = $"Ближайшее время зажигания свечей: {CandleService.GetCandleLightDate()}";
+                var data = await Task.Run(CandleService.GetCandleLightDateAsync);
+                Text.Text = $"Ближайшее время зажигания свечей: {data}";
             }
             catch (Exception ex)
             {

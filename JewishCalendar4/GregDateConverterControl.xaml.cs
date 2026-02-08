@@ -14,16 +14,24 @@ namespace StulSoft.JewishCalendar4
             InitializeComponent();
         }
 
-        private void ConvertDateButton_Click(object sender, RoutedEventArgs e)
+        private async void ConvertDateButton_Click(object sender, RoutedEventArgs e)
         {
+            ConvertDateButton.IsEnabled = false;
+            var currentCursor = HebDate.Cursor;
+            HebDate.Cursor = System.Windows.Input.Cursors.Wait;
+
             try
             {
-                HebDate.Text = HebrewDateConverterService.GetHebrewDate(DateTime.Parse(GregDate.Text));
+                var date = DateTime.Parse(GregDate.Text);
+                HebDate.Text = await Task.Run(() => HebrewDateConverterService.GetHebrewDateAsync(date));
             }
             catch (Exception ex)
             {
                 HebDate.Text = $"ERROR: {ex.Message}";
             }
+
+            ConvertDateButton.IsEnabled = true;
+            HebDate.Cursor = currentCursor;
         }
     }
 }

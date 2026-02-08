@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
-    <AssemblyVersion>4.2.0</AssemblyVersion>
+    <AssemblyVersion>4.3.0</AssemblyVersion>
     <ApplicationIcon>JewishCalendar.ico</ApplicationIcon>
   </PropertyGroup>
 
@@ -16,6 +16,10 @@
 
   <ItemGroup>
     <Content Include="JewishCalendar.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.GenAI" Version="0.15.0" />
   </ItemGroup>
 
 </Project>

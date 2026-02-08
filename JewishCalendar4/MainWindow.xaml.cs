@@ -29,7 +29,7 @@ namespace StulSoft.JewishCalendar4
             CC.Content = new GregDateConverterControl();
         }
 
-        private void CandleLightDateMenuItem_Click(object sender, RoutedEventArgs e)
+        private async void CandleLightDateMenuItem_Click(object sender, RoutedEventArgs e)
         {
             CC.Content = new CandlesLightControl();
         }
