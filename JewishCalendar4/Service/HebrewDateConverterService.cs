@@ -28,7 +28,7 @@ namespace StulSoft.JewishCalendar4.Service
                     {
                         string resultPart1 = $"{hebrewDate.Hy}, {hebrewDate.Hm}, {hebrewDate.Hd}, {hebrewDate.Hebrew}\n";
                         var apiKey = System.Environment.GetEnvironmentVariable("GEMINI_API_KEY");
-                        var gminiClient = new Client(null, apiKey);
+                        var gminiClient = new Client(null, null, apiKey);
                         var gminiRequest = $"Когда в {DateTime.UtcNow.Year} году будет {hebrewDate.Hm}, {hebrewDate.Hd} (одной строкой)?";
                         string resultPart2;
                         var gminiTask = Task.Run(() => gminiClient.Models.GenerateContentAsync(
